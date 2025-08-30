@@ -117,7 +117,6 @@ const RPRTitleGenerator = () => {
   }, []);
 
   // Memoized template generation
-  // In your RPRTitleGenerator component, change this line:
   const generateFullHTML = useCallback(() => {
     const tpl = TEMPLATES[selectedLayout];
     const combinedData = { ...formData, ...images };
@@ -127,7 +126,7 @@ const RPRTitleGenerator = () => {
       logos: images,
       theme: getCurrentTheme,
       testimonials: selectedCategory === 'testimonials' ? testimonials : [],
-      selectedBackground: selectedBackground  // Change from 'background:' to 'selectedBackground:'
+      selectedBackground: selectedBackground 
     }) : '<div class="page">Template not implemented</div>';
   }, [selectedLayout, formData, images, getCurrentTheme, selectedCategory, testimonials, selectedBackground]);
 
