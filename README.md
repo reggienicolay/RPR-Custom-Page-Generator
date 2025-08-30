@@ -1,12 +1,44 @@
-# React + Vite
+# RPR Custom Page Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Internal tool for creating professional custom page inserts for RPR (Realtors Property Resource) reports.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This React application generates branded cover pages, agent bios, testimonials, and fact sheets that integrate with RPR report systems. Built for internal use with specific branding and template requirements.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Multiple document categories (Cover Pages, Agent Bios, Testimonials, Fact Sheets)
+- 19+ professional templates across all categories
+- Dynamic theming system with brand color customization
+- Background image gallery with curated professional imagery
+- PDF generation optimized for RPR integration
+- Form validation and data persistence
+
+## Setup
+
+### Prerequisites
+- Node.js (v16+)
+- npm
+
+src/
+├── components/templates/    # Template definitions by category
+├── hooks/                   # State management hooks
+├── services/               # PDF and background services
+└── templateCategories.js  # Field and category definitions
+
+## Tech Stack
+
+- React 18 + Vite
+- Tailwind CSS
+- Custom React hooks for state management
+- HTML-to-PDF conversion
+
+## Development
+
+npm run dev - Development server
+npm run build - Production build
+npm run lint - Code linting
+
+## Template Development
+Templates are JavaScript functions returning HTML strings. Follow existing patterns in /src/components/templates/ for consistency.
