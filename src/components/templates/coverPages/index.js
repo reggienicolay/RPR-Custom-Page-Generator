@@ -1,0 +1,9 @@
+// Import and export existing cover page templates
+export { default as modern } from './modern.js';
+export { default as classic } from './classic.js';
+export { default as hero } from './hero.js';
+export { default as branded } from './branded.js';
+export { default as elegant } from './elegant.js';
+export { default as minimalist } from './minimalist.js';
+export { default as listingPresentation } from './listingPresentation.js';
+export { default as modernSplit } from './modernSplit.js';
