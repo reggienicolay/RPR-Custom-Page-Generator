@@ -4,10 +4,10 @@ import { Image as ImageIcon, X } from 'lucide-react';
 import AccordionSection from './AccordionSection';
 import BackgroundPicker from './BackgroundPicker';
 
-const BackgroundSelector = ({ 
-  selectedBackground, 
-  onBackgroundSelect, 
-  onBackgroundRemove 
+const BackgroundSelector = ({
+  selectedBackground,
+  onBackgroundSelect,
+  onBackgroundRemove
 }) => {
   const [showPicker, setShowPicker] = useState(false);
 
@@ -25,53 +25,60 @@ const BackgroundSelector = ({
         <div className="space-y-4">
           {/* Current Background Display */}
           {selectedBackground ? (
-            <div className="relative">
-              <div className="aspect-video w-full bg-gray-100 rounded-lg overflow-hidden border-2 border-gray-200">
+            <div className="flex items-center gap-4">
+              {/* Left side - Info and button */}
+              <div className="flex-1">
+                <div className="mb-3">
+                  <p className="font-medium text-gray-900">{selectedBackground.name}</p>
+                  <p className="text-sm text-gray-600">
+                    {selectedBackground.type === 'upload' ? 'Uploaded Image' : 'Gallery Image'}
+                  </p>
+                </div>
+
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => setShowPicker(true)}
+                    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+                  >
+                    <ImageIcon className="w-4 h-4" />
+                    Change Background
+                  </button>
+
+                  <button
+                    onClick={handleRemoveBackground}
+                    className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                    title="Remove background"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Right side - Larger preview */}
+              <div className="w-40 h-28 bg-gray-100 rounded-lg overflow-hidden border flex-shrink-0">
                 <img
                   src={selectedBackground.thumbnail}
                   alt={selectedBackground.name}
                   className="w-full h-full object-cover"
                 />
               </div>
-              
-              {/* Background Info */}
-              <div className="mt-3 flex items-center justify-between">
-                <div>
-                  <p className="font-medium text-gray-900">{selectedBackground.name}</p>
-                  <p className="text-sm text-gray-600">
-                    {selectedBackground.type === 'upload' ? 'Uploaded Image' : 'Gallery Image'}
-                  </p>
-                </div>
-                
-                {/* Remove Button */}
-                <button
-                  onClick={handleRemoveBackground}
-                  className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                  title="Remove background"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
             </div>
           ) : (
             /* No Background State */
-            <div className="aspect-video w-full bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center text-center p-6">
+            <div className="h-32 w-full bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center text-center p-6 pb-8">
               <ImageIcon className="w-8 h-8 text-gray-400 mb-3" />
               <p className="text-gray-600 font-medium mb-2">No background selected</p>
               <p className="text-sm text-gray-500 mb-4">Choose from our gallery or upload your own image</p>
+
+              <button
+                onClick={() => setShowPicker(true)}
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+              >
+                <ImageIcon className="w-4 h-4" />
+                Choose Background
+              </button>
             </div>
           )}
-
-          {/* Action Buttons */}
-          <div className="flex gap-3">
-            <button
-              onClick={() => setShowPicker(true)}
-              className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
-            >
-              <ImageIcon className="w-4 h-4" />
-              {selectedBackground ? 'Change Background' : 'Choose Background'}
-            </button>
-          </div>
 
           {/* Usage Tips */}
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">

@@ -126,7 +126,7 @@ const RPRTitleGenerator = () => {
       logos: images,
       theme: getCurrentTheme,
       testimonials: selectedCategory === 'testimonials' ? testimonials : [],
-      selectedBackground: selectedBackground 
+      selectedBackground: selectedBackground
     }) : '<div class="page">Template not implemented</div>';
   }, [selectedLayout, formData, images, getCurrentTheme, selectedCategory, testimonials, selectedBackground]);
 
@@ -197,8 +197,8 @@ const RPRTitleGenerator = () => {
                     key={key}
                     onClick={() => setSelectedCategory(key)}
                     className={`p-4 rounded-lg border-2 transition-all text-left ${selectedCategory === key
-                        ? 'border-blue-500 bg-blue-50'
-                        : 'border-gray-200 hover:border-gray-300 bg-white'
+                      ? 'border-blue-500 bg-blue-50'
+                      : 'border-gray-200 hover:border-gray-300 bg-white'
                       }`}
                   >
                     <div className="flex items-center mb-2">
@@ -221,8 +221,8 @@ const RPRTitleGenerator = () => {
                   key={templateKey}
                   onClick={() => setSelectedLayout(templateKey)}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${selectedLayout === templateKey
-                      ? 'btn-template text-white shadow-md'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? 'btn-template text-white shadow-md'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                 >
                   {templateKey.replace(/-/g, ' ').replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
@@ -243,11 +243,13 @@ const RPRTitleGenerator = () => {
               themePresets={THEME_PRESETS}
             />
 
-            <BackgroundSelector
-              selectedBackground={selectedBackground}
-              onBackgroundSelect={handleBackgroundSelect}
-              onBackgroundRemove={handleBackgroundRemove}
-            />
+            {currentCategory?.fields?.includes('backgroundImage') && (
+              <BackgroundSelector
+                selectedBackground={selectedBackground}
+                onBackgroundSelect={handleBackgroundSelect}
+                onBackgroundRemove={handleBackgroundRemove}
+              />
+            )}
 
             <FormSections
               selectedCategory={selectedCategory}

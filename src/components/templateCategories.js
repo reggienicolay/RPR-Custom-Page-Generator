@@ -9,6 +9,7 @@ export const TEMPLATE_CATEGORIES = {
       'reportType',
       'reportSubheadline',
       'reportDate',
+      'backgroundImage',
       'price',
       'bedrooms',
       'bathrooms',
@@ -31,6 +32,7 @@ export const TEMPLATE_CATEGORIES = {
     fields: [
       'agentName',
       'agentTitle',
+      'backgroundImage',
       'agentPhone',
       'agentEmail',
       'licenseNumber',
@@ -218,6 +220,12 @@ export const FIELD_DEFINITIONS = {
   },
 
   // Report fields
+  backgroundImage: {
+  label: 'Background Image',
+  type: 'background',
+  section: 'report'
+  },
+  
   reportType: {
     label: 'Report Title',
     type: 'text',

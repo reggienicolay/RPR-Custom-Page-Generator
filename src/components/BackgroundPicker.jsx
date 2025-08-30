@@ -227,10 +227,10 @@ const BackgroundPicker = ({
           )}
         </div>
 
-        {/* Preview Panel */}
-        {hoveredBackground && (
-          <div className="border-t p-4 bg-gray-50">
-            <div className="flex items-center gap-4">
+        {/* Fixed Preview Panel */}
+        <div className="border-t p-4 bg-gray-50 h-20 flex items-center">
+          {hoveredBackground ? (
+            <div className="flex items-center gap-4 w-full">
               <div className="w-20 h-12 bg-gray-200 rounded overflow-hidden flex-shrink-0">
                 <img
                   src={hoveredBackground.thumbnail}
@@ -251,8 +251,12 @@ const BackgroundPicker = ({
                 Select
               </button>
             </div>
-          </div>
-        )}
+          ) : (
+            <div className="flex items-center justify-center w-full text-gray-500 text-sm">
+              Hover over an image to see details
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
