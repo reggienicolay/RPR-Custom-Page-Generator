@@ -136,6 +136,7 @@ const RPRTitleGenerator = () => {
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <style>
           * { margin: 0; padding: 0; box-sizing: border-box; }
           @page { size: 8.5in 11in; margin: 0; }

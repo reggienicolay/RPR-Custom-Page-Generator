@@ -1,4 +1,4 @@
-// testimonialFeatured.js - Single Featured Testimonial with Cover Page Design
+// testimonialFeatured.js - Single Featured Testimonial with Print-Friendly Design
 export const testimonialFeatured = ({ formData, logos, theme, testimonials }) => {
   // Use the first testimonial, or create a sample one
   const testimonial = testimonials[0] || {
@@ -15,115 +15,62 @@ export const testimonialFeatured = ({ formData, logos, theme, testimonials }) =>
   return `
     <div class="page" style="
       position: relative;
-      overflow: hidden;
-      background: linear-gradient(135deg, ${theme.primary || '#1e40af'} 0%, ${theme.secondary || '#7c3aed'} 100%);
-      color: white;
+      background: #ffffff;
+      color: #1f2937;
       font-family: 'Georgia', serif;
+      width: 8.5in;
+      height: 11in;
+      overflow: hidden;
     ">
-      <!-- Background Elements -->
-      ${testimonial.propertyImage ? `
+      <!-- Clean Header -->
+      <header style="
+        background: linear-gradient(135deg, ${theme.primary || '#1e40af'} 0%, ${theme.secondary || '#7c3aed'} 100%);
+        color: white;
+        padding: 2rem 2rem 1.5rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      ">
+        <!-- Subtle header decoration -->
         <div style="
           position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-image: url(${testimonial.propertyImage});
-          background-size: cover;
-          background-position: center;
-          opacity: 0.15;
-          z-index: 0;
+          top: -50px;
+          right: -50px;
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.1);
         "></div>
-      ` : ''}
-      
-      <!-- Geometric Background Pattern -->
-      <div style="
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-image: 
-          radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 1px, transparent 1px),
-          radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 1px, transparent 1px);
-        background-size: 100px 100px, 150px 150px;
-        z-index: 1;
-      "></div>
-      
-      <!-- Floating Elements -->
-      <div style="
-        position: absolute;
-        top: 10%;
-        right: 5%;
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.05);
-        z-index: 1;
-      "></div>
-      
-      <div style="
-        position: absolute;
-        bottom: 10%;
-        left: 5%;
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.08);
-        z-index: 1;
-      "></div>
-
-      <!-- Main Content -->
-      <div style="
-        position: relative;
-        z-index: 2;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 3rem;
-      ">
-        <!-- Company Logo -->
-        ${formData.companyLogo ? `
-          <img src="${formData.companyLogo}" alt="${formData.companyName || 'Company'}" style="
-            max-height: 80px;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            filter: brightness(0) invert(1);
-          " />
-        ` : ''}
         
-        <!-- Main Quote -->
-        <div style="
-          position: relative;
-          max-width: 700px;
-          margin-bottom: 3rem;
-        ">
-          <!-- Large Quote Mark -->
-          <div style="
-            position: absolute;
-            top: -30px;
-            left: -40px;
-            font-size: 8rem;
-            font-family: 'Georgia', serif;
-            color: rgba(255, 255, 255, 0.1);
-            line-height: 1;
-            z-index: -1;
-          ">"</div>
+        <div style="position: relative; z-index: 2;">
+          ${formData.companyLogo ? `
+            <img src="${formData.companyLogo}" alt="${formData.companyName || 'Company'}" style="
+              max-height: 60px;
+              margin-bottom: 1rem;
+              filter: brightness(0) invert(1);
+            " />
+          ` : ''}
           
-          <blockquote style="
-            font-size: 1.75rem;
-            font-style: italic;
-            line-height: 1.6;
-            margin: 0;
-            font-weight: 300;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-          ">${testimonial.testimonialText}</blockquote>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 1rem;">
+            <i class="fas fa-quote-left" style="font-size: 2rem; opacity: 0.8;"></i>
+            <h1 style="
+              font-size: 2rem;
+              font-weight: 400;
+              margin: 0;
+              letter-spacing: 0.5px;
+            ">Client Success Story</h1>
+          </div>
         </div>
-        
-        <!-- Star Rating -->
+      </header>
+
+      <!-- Main Content Area -->
+      <main style="
+        padding: 3rem 2rem 2rem;
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto;
+      ">
+        <!-- Star Rating with Font Awesome -->
         <div style="
           display: flex;
           gap: 4px;
@@ -131,150 +78,272 @@ export const testimonialFeatured = ({ formData, logos, theme, testimonials }) =>
           justify-content: center;
         ">
           ${Array.from({length: 5}, (_, i) => `
-            <span style="
-              color: ${i < parseInt(testimonial.rating || 5) ? '#fbbf24' : 'rgba(255, 255, 255, 0.3)'};
-              font-size: 2rem;
-              text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            ">★</span>
+            <i class="fa${i < parseInt(testimonial.rating || 5) ? 's' : 'r'} fa-star" style="
+              color: ${i < parseInt(testimonial.rating || 5) ? '#fbbf24' : '#e5e7eb'};
+              font-size: 1.8rem;
+            "></i>
           `).join('')}
         </div>
+        
+        <!-- Main Testimonial Quote -->
+        <blockquote style="
+          font-size: 1.5rem;
+          font-style: italic;
+          line-height: 1.6;
+          margin: 0 0 2.5rem 0;
+          font-weight: 300;
+          color: #374151;
+          position: relative;
+        ">
+          <i class="fas fa-quote-left" style="
+            position: absolute;
+            top: -20px;
+            left: -30px;
+            font-size: 3rem;
+            color: ${theme.primary || '#1e40af'};
+            opacity: 0.2;
+          "></i>
+          "${testimonial.testimonialText}"
+        </blockquote>
         
         <!-- Client Information -->
         <div style="
           display: flex;
           align-items: center;
+          justify-content: center;
           gap: 2rem;
-          margin-bottom: 3rem;
+          margin-bottom: 2rem;
+          padding: 2rem;
+          background: #f9fafb;
+          border-radius: 16px;
+          border: 1px solid #e5e7eb;
         ">
           ${testimonial.clientPhoto ? `
             <img src="${testimonial.clientPhoto}" alt="${testimonial.clientName}" style="
-              width: 100px;
-              height: 100px;
+              width: 80px;
+              height: 80px;
               border-radius: 50%;
               object-fit: cover;
-              border: 4px solid rgba(255, 255, 255, 0.3);
-              box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+              border: 3px solid ${theme.primary || '#1e40af'};
             " />
           ` : ''}
           
           <div style="text-align: left;">
             <h3 style="
-              font-size: 1.5rem;
+              font-size: 1.3rem;
               font-weight: 600;
               margin: 0 0 0.5rem 0;
-              text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+              color: ${theme.primary || '#1e40af'};
             ">${testimonial.clientName}</h3>
             
             <p style="
-              font-size: 1.1rem;
+              font-size: 1rem;
               margin: 0 0 0.5rem 0;
-              opacity: 0.9;
-            ">${testimonial.clientLocation}</p>
+              color: #6b7280;
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+            ">
+              <i class="fas fa-map-marker-alt" style="color: ${theme.primary || '#1e40af'}; font-size: 0.9rem;"></i>
+              ${testimonial.clientLocation}
+            </p>
             
             <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
               ${testimonial.propertyType ? `
                 <span style="
-                  background: rgba(255, 255, 255, 0.2);
-                  padding: 0.5rem 1rem;
-                  border-radius: 20px;
-                  font-size: 0.9rem;
+                  background: ${theme.primary || '#1e40af'}15;
+                  color: ${theme.primary || '#1e40af'};
+                  padding: 0.4rem 0.8rem;
+                  border-radius: 16px;
+                  font-size: 0.85rem;
                   font-weight: 500;
-                  backdrop-filter: blur(10px);
-                  border: 1px solid rgba(255, 255, 255, 0.3);
-                ">${testimonial.propertyType}</span>
+                  display: flex;
+                  align-items: center;
+                  gap: 0.4rem;
+                ">
+                  <i class="fas fa-home" style="font-size: 0.75rem;"></i>
+                  ${testimonial.propertyType}
+                </span>
               ` : ''}
               
               ${testimonial.saleDate ? `
                 <span style="
-                  background: rgba(255, 255, 255, 0.2);
-                  padding: 0.5rem 1rem;
-                  border-radius: 20px;
-                  font-size: 0.9rem;
+                  background: ${theme.secondary || '#7c3aed'}15;
+                  color: ${theme.secondary || '#7c3aed'};
+                  padding: 0.4rem 0.8rem;
+                  border-radius: 16px;
+                  font-size: 0.85rem;
                   font-weight: 500;
-                  backdrop-filter: blur(10px);
-                  border: 1px solid rgba(255, 255, 255, 0.3);
-                ">${new Date(testimonial.saleDate).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</span>
+                  display: flex;
+                  align-items: center;
+                  gap: 0.4rem;
+                ">
+                  <i class="fas fa-calendar-alt" style="font-size: 0.75rem;"></i>
+                  ${new Date(testimonial.saleDate).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                </span>
               ` : ''}
             </div>
           </div>
         </div>
         
         <!-- Call to Action -->
-        <div style="
-          text-align: center;
-          margin-top: auto;
-        ">
-          <h2 style="
-            font-size: 1.75rem;
-            font-weight: 400;
-            margin: 0 0 1rem 0;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-          ">Experience the Same Excellence</h2>
+        <div style="text-align: center;">
+          <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
+            <i class="fas fa-award" style="font-size: 1.3rem; color: ${theme.primary || '#1e40af'};"></i>
+            <h2 style="
+              font-size: 1.6rem;
+              font-weight: 500;
+              margin: 0;
+              color: ${theme.primary || '#1e40af'};
+            ">Experience the Same Excellence</h2>
+          </div>
           
           <p style="
-            font-size: 1.1rem;
-            margin: 0 0 2rem 0;
-            opacity: 0.9;
+            font-size: 1rem;
+            margin: 0 0 1.5rem 0;
+            color: #6b7280;
             max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
           ">Join our satisfied clients and discover what exceptional real estate service looks like</p>
-          
+        </div>
+      </main>
+
+      <!-- Cool Footer Design -->
+      <footer style="
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, ${theme.primary || '#1e40af'} 0%, ${theme.secondary || '#7c3aed'} 100%);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      ">
+        <!-- Footer decorative elements -->
+        <div style="
+          position: absolute;
+          top: -100px;
+          left: -100px;
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.05);
+        "></div>
+        <div style="
+          position: absolute;
+          top: -50px;
+          right: -50px;
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.08);
+        "></div>
+        
+        <!-- Wave pattern -->
+        <svg style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 40px;
+          margin-top: -1px;
+        " viewBox="0 0 1200 40" preserveAspectRatio="none">
+          <path d="M0,20 C300,5 600,35 900,15 C1050,5 1150,25 1200,20 L1200,0 L0,0 Z" fill="white" opacity="0.1"/>
+          <path d="M0,25 C250,10 550,30 800,18 C950,10 1100,28 1200,22 L1200,0 L0,0 Z" fill="white" opacity="0.05"/>
+        </svg>
+        
+        <div style="position: relative; z-index: 2;">
           <!-- Agent Contact Info -->
-          <div style="
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 16px;
-            padding: 2rem;
-            display: inline-block;
-            min-width: 400px;
-          ">
-            ${formData.agentName ? `
+          ${formData.agentName ? `
+            <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 0.5rem;">
+              <i class="fas fa-user-tie" style="font-size: 1.2rem; opacity: 0.8;"></i>
               <h3 style="
-                font-size: 1.5rem;
+                font-size: 1.4rem;
                 font-weight: 600;
-                margin: 0 0 0.5rem 0;
+                margin: 0;
               ">${formData.agentName}</h3>
-            ` : ''}
-            
-            ${formData.agentTitle ? `
-              <p style="
-                font-size: 1rem;
-                margin: 0 0 1rem 0;
-                opacity: 0.9;
-              ">${formData.agentTitle}</p>
-            ` : ''}
-            
-            <div style="
-              display: flex;
-              justify-content: center;
-              gap: 2rem;
-              flex-wrap: wrap;
-            ">
-              ${formData.agentPhone ? `
-                <div style="text-align: center;">
-                  <div style="font-weight: 600; margin-bottom: 0.25rem;">Call</div>
-                  <a href="tel:${formData.agentPhone}" style="
-                    color: white;
-                    text-decoration: none;
-                    font-size: 1.1rem;
-                  ">${formData.agentPhone}</a>
-                </div>
-              ` : ''}
-              
-              ${formData.agentEmail ? `
-                <div style="text-align: center;">
-                  <div style="font-weight: 600; margin-bottom: 0.25rem;">Email</div>
-                  <a href="mailto:${formData.agentEmail}" style="
-                    color: white;
-                    text-decoration: none;
-                    font-size: 1.1rem;
-                  ">${formData.agentEmail}</a>
-                </div>
-              ` : ''}
             </div>
+          ` : ''}
+          
+          ${formData.agentTitle ? `
+            <p style="
+              font-size: 1rem;
+              margin: 0 0 1.5rem 0;
+              opacity: 0.9;
+            ">${formData.agentTitle}</p>
+          ` : ''}
+          
+          <div style="
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+          ">
+            ${formData.agentPhone ? `
+              <a href="tel:${formData.agentPhone}" style="
+                color: white;
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                gap: 0.7rem;
+                padding: 0.8rem 1.5rem;
+                background: rgba(255, 255, 255, 0.15);
+                border-radius: 25px;
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                transition: all 0.3s ease;
+              ">
+                <i class="fas fa-phone" style="font-size: 1.1rem;"></i>
+                <div>
+                  <div style="font-size: 0.8rem; opacity: 0.8;">Call</div>
+                  <div style="font-size: 1rem; font-weight: 600;">${formData.agentPhone}</div>
+                </div>
+              </a>
+            ` : ''}
+            
+            ${formData.agentEmail ? `
+              <a href="mailto:${formData.agentEmail}" style="
+                color: white;
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                gap: 0.7rem;
+                padding: 0.8rem 1.5rem;
+                background: rgba(255, 255, 255, 0.15);
+                border-radius: 25px;
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                transition: all 0.3s ease;
+              ">
+                <i class="fas fa-envelope" style="font-size: 1.1rem;"></i>
+                <div>
+                  <div style="font-size: 0.8rem; opacity: 0.8;">Email</div>
+                  <div style="font-size: 1rem; font-weight: 600;">${formData.agentEmail}</div>
+                </div>
+              </a>
+            ` : ''}
           </div>
         </div>
-      </div>
+        
+        <!-- RPR Footer -->
+        <div style="
+          position: absolute;
+          bottom: 0.5rem;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 0.7rem;
+          opacity: 0.6;
+        ">
+          <img src="src/assets/logo-black-color.svg" alt="RPR Logo" style="height:16px; width:auto; object-fit:contain; filter: brightness(0) invert(1);"/>
+          Copyright 2025 Realtors Property Resource® LLC. All Rights Reserved.
+        </div>
+      </footer>
     </div>
   `;
 };

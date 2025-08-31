@@ -64,7 +64,7 @@ export const TEMPLATE_CATEGORIES = {
       'companyName',
       'companyLogo'
     ],
-    templates: ['testimonialCards', 'testimonialFeatured', 'testimonialGrid', 'testimonialClean']
+    templates: ['testimonialCards', 'testimonialFeatured', 'testimonialGrid', 'testimonialClean', 'expertInsights']
   },
   'fact-sheets': {
     name: 'Fact Sheets',
@@ -84,10 +84,15 @@ export const TEMPLATE_CATEGORIES = {
       'marketTrends',
       'propertyImages',
       'agentName',
+      'agentPhoto',
+      'agentTitle',
+      'agentPhone',
+      'agentEmail',
+      'licenseNumber',
       'companyName',
       'companyLogo'
     ],
-    templates: ['fact-sheet-detailed', 'fact-sheet-summary', 'fact-sheet-comparison']
+    templates: ['fact-sheet-detailed', 'fact-sheet-summary', 'fact-sheet-comparison', 'showingFactSheet', 'sellerMarketingPlan', 'sellerProcess']
   }
 };
 

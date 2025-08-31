@@ -1,4 +1,4 @@
-// testimonialCards.js - Multiple Testimonials in Card Layout
+// testimonialCards.js - Multiple Testimonials in Card Layout with Font Awesome
 export const testimonialCards = ({ formData, logos, theme, testimonials }) => {
   // Use up to 3 testimonials, fill with sample data if needed
   const displayTestimonials = testimonials.slice(0, 3);
@@ -59,13 +59,16 @@ export const testimonialCards = ({ formData, logos, theme, testimonials }) => {
           " />
         ` : ''}
         
-        <h1 style="
-          font-size: 2.5rem;
-          font-weight: 700;
-          margin: 0 0 1rem 0;
-          color: ${theme.primary || '#3b82f6'};
-          line-height: 1.2;
-        ">Client Success Stories</h1>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
+          <i class="fas fa-users" style="color: ${theme.primary || '#3b82f6'}; font-size: 2rem;"></i>
+          <h1 style="
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0;
+            color: ${theme.primary || '#3b82f6'};
+            line-height: 1.2;
+          ">Client Success Stories</h1>
+        </div>
         
         <p style="
           font-size: 1.1rem;
@@ -105,7 +108,7 @@ export const testimonialCards = ({ formData, logos, theme, testimonials }) => {
             transition: transform 0.2s;
             height: fit-content;
           ">
-            <!-- Quote mark -->
+            <!-- Quote mark with Font Awesome -->
             <div style="
               position: absolute;
               top: -10px;
@@ -118,11 +121,12 @@ export const testimonialCards = ({ formData, logos, theme, testimonials }) => {
               align-items: center;
               justify-content: center;
               color: white;
-              font-size: 1.5rem;
-              font-weight: bold;
-            ">"</div>
+              font-size: 1.2rem;
+            ">
+              <i class="fas fa-quote-left"></i>
+            </div>
             
-            <!-- Star Rating -->
+            <!-- Star Rating with Font Awesome -->
             <div style="
               display: flex;
               gap: 2px;
@@ -130,10 +134,10 @@ export const testimonialCards = ({ formData, logos, theme, testimonials }) => {
               justify-content: center;
             ">
               ${Array.from({length: 5}, (_, i) => `
-                <span style="
+                <i class="fa${i < parseInt(testimonial.rating || 5) ? 's' : 'r'} fa-star" style="
                   color: ${i < parseInt(testimonial.rating || 5) ? '#fbbf24' : '#e5e7eb'};
                   font-size: 1.2rem;
-                ">★</span>
+                "></i>
               `).join('')}
             </div>
             
@@ -167,11 +171,18 @@ export const testimonialCards = ({ formData, logos, theme, testimonials }) => {
                 color: ${theme.primary || '#3b82f6'};
               ">${testimonial.clientName || 'Client Name'}</h3>
               
-              <p style="
+              <div style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
                 font-size: 0.9rem;
                 color: #6b7280;
                 margin: 0 0 0.5rem 0;
-              ">${testimonial.clientLocation || 'Location'}</p>
+              ">
+                <i class="fas fa-map-marker-alt" style="color: ${theme.primary || '#3b82f6'}; font-size: 0.8rem;"></i>
+                ${testimonial.clientLocation || 'Location'}
+              </div>
               
               ${testimonial.propertyType ? `
                 <div style="
@@ -181,9 +192,14 @@ export const testimonialCards = ({ formData, logos, theme, testimonials }) => {
                   border-radius: 12px;
                   font-size: 0.8rem;
                   font-weight: 500;
-                  display: inline-block;
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 0.5rem;
                   margin-top: 0.5rem;
-                ">${testimonial.propertyType}</div>
+                ">
+                  <i class="fas fa-home" style="font-size: 0.7rem;"></i>
+                  ${testimonial.propertyType}
+                </div>
               ` : ''}
             </div>
           </div>
@@ -211,11 +227,14 @@ export const testimonialCards = ({ formData, logos, theme, testimonials }) => {
         "></div>
         
         <div style="position: relative; z-index: 1;">
-          <h2 style="
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin: 0 0 1rem 0;
-          ">Ready to Join Our Success Stories?</h2>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
+            <i class="fas fa-handshake" style="font-size: 1.5rem; opacity: 0.8;"></i>
+            <h2 style="
+              font-size: 1.5rem;
+              font-weight: 600;
+              margin: 0;
+            ">Ready to Join Our Success Stories?</h2>
+          </div>
           
           <p style="
             font-size: 1rem;
@@ -230,21 +249,30 @@ export const testimonialCards = ({ formData, logos, theme, testimonials }) => {
             flex-wrap: wrap;
           ">
             ${formData.agentName ? `
-              <div>
-                <strong style="font-size: 1.1rem;">${formData.agentName}</strong>
-                ${formData.agentTitle ? `<div style="opacity: 0.8; font-size: 0.9rem;">${formData.agentTitle}</div>` : ''}
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fas fa-user-tie" style="opacity: 0.8;"></i>
+                <div>
+                  <strong style="font-size: 1.1rem;">${formData.agentName}</strong>
+                  ${formData.agentTitle ? `<div style="opacity: 0.8; font-size: 0.9rem;">${formData.agentTitle}</div>` : ''}
+                </div>
               </div>
             ` : ''}
             
             ${formData.agentPhone ? `
-              <div>
-                <strong>Phone:</strong> ${formData.agentPhone}
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fas fa-phone" style="opacity: 0.8;"></i>
+                <div>
+                  <strong>Phone:</strong> ${formData.agentPhone}
+                </div>
               </div>
             ` : ''}
             
             ${formData.agentEmail ? `
-              <div>
-                <strong>Email:</strong> ${formData.agentEmail}
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fas fa-envelope" style="opacity: 0.8;"></i>
+                <div>
+                  <strong>Email:</strong> ${formData.agentEmail}
+                </div>
               </div>
             ` : ''}
           </div>

@@ -2,8 +2,7 @@
 import * as coverPageTemplates from './coverPages';
 import * as agentBioTemplates from './agentBios';
 import * as testimonialTemplates from './testimonials';
-// Import other categories as you create them
-// import * as factSheetTemplates from './factSheets';
+import * as factSheetTemplates from './factsheets';
 
 // Template mapping by ID - this is what your component expects
 const TEMPLATES = {
@@ -27,12 +26,13 @@ const TEMPLATES = {
   'testimonialCards': testimonialTemplates.testimonialCards,
   'testimonialFeatured': testimonialTemplates.testimonialFeatured,
   'testimonialGrid': testimonialTemplates.testimonialGrid,
-  testimonialClean: testimonialTemplates.testimonialClean, // Added missing template
+  'testimonialClean': testimonialTemplates.testimonialClean, 
+  'expertInsights': testimonialTemplates.expertInsights,
   
-  // Fact Sheets (placeholder for future implementation)
-  'fact-sheet-detailed': ({ formData, logos, theme }) => '<div class="page">Fact Sheet Detailed - Coming Soon</div>',
-  'fact-sheet-summary': ({ formData, logos, theme }) => '<div class="page">Fact Sheet Summary - Coming Soon</div>',
-  'fact-sheet-comparison': ({ formData, logos, theme }) => '<div class="page">Fact Sheet Comparison - Coming Soon</div>',
+  // Fact Sheets (
+  'showingFactSheet': factSheetTemplates.showingFactSheet,
+  'sellerMarketingPlan': factSheetTemplates.sellerMarketingPlan,
+  'sellerProcess': factSheetTemplates.sellerProcess,
 };
 
 // Helper function to get templates by category
@@ -45,10 +45,10 @@ export const getTemplatesByCategory = (category) => {
       'bio-standard', 'bio-modern', 'bio-detailed', 'agent-architect'
     ],
     'testimonials': [
-      'testimonial-cards', 'testimonial-featured', 'testimonial-grid'
+      'testimonial-cards', 'testimonial-featured', 'testimonial-grid', 'expert-insights'
     ],
     'fact-sheets': [
-      'fact-sheet-detailed', 'fact-sheet-summary', 'fact-sheet-comparison'
+      'fact-sheet-detailed', 'fact-sheet-summary', 'fact-sheet-comparison', 'seller-process'
     ]
   };
   
